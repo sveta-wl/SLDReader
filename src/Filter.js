@@ -96,18 +96,26 @@ function doFIDFilter(fids, feature) {
   return false;
 }
 
+/**
+ * Filter by literal
+ *
+ * @param {Filter} filter
+ * @param {object} feature
+ * @returns {boolean}
+ */
 function doLiteralFilter(filter, feature) {
-    if (filter.literal && feature) {
-        const featureProperties = feature.getProperties();
 
-        for (let property in featureProperties) {
-            if (featureProperties[property] == filter.literal) {
-                return true;
-            }
-        }
+  if (filter.literal && feature) {
+    const featureProperties = feature.getProperties() || feature.properties;
+
+    for (const property in featureProperties) {
+      if (featureProperties[property] === filter.literal) {
+        return true;
+      }
     }
+  }
 
-    return false;
+  return false;
 }
 
 /**
