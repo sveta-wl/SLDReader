@@ -45,9 +45,12 @@ function addFilterComparison(node, obj, prop) {
  * @type {[type]}
  */
 function addLiteral(node, obj, prop, trimText) {
+  if (undefined === obj.type) {
     obj.type = 'literal';
     obj.operator = prop.toLowerCase();
-    addPropWithTextContent(node, obj, prop, trimText);
+  }
+
+  addPropWithTextContent(node, obj, prop, trimText);
 }
 
 /**
