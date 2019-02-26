@@ -29,6 +29,17 @@ describe('Filter tests', () => {
     expect(filter.upperboundary).to.equal('1065512599');
   });
 
+  it('Literal filter', () => {
+    const filterXml = `<Filter>
+      <Literal>rail</Literal>
+    </Filter>`;
+
+    const filter = Reader(filterXml);
+    expect(filter.type).to.equal('literal');
+    expect(filter.operator).to.equal('literal');
+    expect(filter.literal).to.equal('rail');
+  });
+
   it('PropertyIsLike', () => {
     const filterXml = `<Filter>
       <PropertyIsLike wildCard="%" singleChar="?" escapeChar="\\">

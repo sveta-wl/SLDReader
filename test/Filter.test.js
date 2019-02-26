@@ -299,6 +299,22 @@ describe('filter rules', () => {
       });
     });
 
+    describe('Literal', () => {
+      it('literal filter', () => {
+        const filter = {
+          type: 'literal',
+          operator: 'literal',
+          literal: 'rail',
+        };
+
+        const feature = {
+          properties: { class: 'rail' },
+        };
+
+        expect(filterSelector(filter, feature)).to.be.true;
+      });
+    });
+
     describe('Nested logical filter', () => {
       const harry = { properties: { name: 'Harry', age: 64 } };
       const sjenkie = { properties: { name: 'Sjenkie', age: 8 } };
